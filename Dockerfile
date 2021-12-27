@@ -8,7 +8,8 @@ COPY ./ /app/
 #RUN npm run build -- --output-path=./dist/sunangapp --configuration $configuration
 
 #Stage 1
-FROM nginx:1.15
+#FROM nginx:1.15
+FROM nginxinc/nginx-unprivileged 
 COPY --from=build-stage /app/dist/sunangapp/ /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
