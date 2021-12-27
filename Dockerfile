@@ -26,6 +26,8 @@ RUN rm -rf /usr/share/nginx/html/*
 ## copy over the artifacts in dist folder to default nginx public folder
 COPY dist/sunangapp/ /usr/share/nginx/html
 
+RUN chown -R $UID:$GID /var/cache/nginx/client_temp
+
 EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]
