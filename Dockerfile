@@ -2,10 +2,10 @@
 FROM node:14-alpine as build-stage
 WORKDIR /app
 COPY package*.json /app/
-#RUN npm install
+RUN npm install
 COPY ./ /app/
-#ARG configuration=production
-#RUN npm run build -- --output-path=./dist/sunangapp --configuration $configuration
+ARG configuration=production
+RUN npm run build -- --output-path=./dist/sunangapp --configuration $configuration
 
 #Stage 1
 FROM nginx:1.15
