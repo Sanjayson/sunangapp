@@ -11,5 +11,5 @@ COPY ./ /app/
 FROM nginx:1.15
 COPY --from=build-stage /app/dist/sunangapp/ /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-RUN sudo systemctl restart nginx
-RUN sudo systemctl status nginx
+RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
+    chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
