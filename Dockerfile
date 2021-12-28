@@ -27,8 +27,8 @@ RUN rm -rf /usr/share/nginx/html/*
 COPY  /dist/sunangapp/ /usr/share/nginx/html
 RUN chgrp -R 0 /var/cache/ /var/log/ /var/run/ && \
     chmod -R g=u /var/cache/ /var/log/ /var/run/
-RUN sudo nginx -t
-RUN sudo systemctl restart nginx     
+#RUN sudo nginx -t
+#RUN sudo systemctl restart nginx     
 EXPOSE 8080
 #Entry point of application
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
