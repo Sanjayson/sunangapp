@@ -26,7 +26,7 @@ RUN rm -rf /usr/share/nginx/html/*
 ## copy over the artifacts in dist folder to default nginx public folder
 COPY dist/sunangapp/ /usr/share/nginx/html
 
-RUN oadm policy add-scc-to-user anyuid -z default
+#RUN oadm policy add-scc-to-user anyuid -z default
 
 EXPOSE 8080
 
